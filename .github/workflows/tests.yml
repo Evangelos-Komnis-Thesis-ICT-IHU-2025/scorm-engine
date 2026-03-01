@@ -20,6 +20,8 @@ jobs:
     name: Maven Test Suite
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    env:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
     steps:
       - name: Checkout
@@ -32,5 +34,20 @@ jobs:
           java-version: '17'
           cache: maven
 
-      - name: Run tests
-        run: mvn -B -ntp test
+      - name: Run tests with JaCoCo coverage
+        run: mvn -B -ntp test jacoco:report
+
+      - name: Upload coverage artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: scorm-engine-jacoco-xml
+          path: target/site/jacoco/jacoco.xml
+          if-no-files-found: error
+
+      - name: Upload coverage to Codecov
+        if: ${{ env.CODECOV_TOKEN != '' }}
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ env.CODECOV_TOKEN }}
+          files: target/site/jacoco/jacoco.xml
+          flags: scorm-engine
