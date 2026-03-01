@@ -1,8 +1,5 @@
 package com.ihu.scorm.engine.attempt.api;
 
-import com.ihu.scorm.engine.attempt.crud.AttemptStatus;
-import com.ihu.scorm.engine.attempt.crud.CompletionStatus;
-import com.ihu.scorm.engine.attempt.crud.SuccessStatus;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.UUID;
@@ -13,11 +10,11 @@ public record AttemptDto(
     UUID courseId,
     UUID enrollmentId,
     Integer attemptNo,
-    AttemptStatus status,
+    String status,
     Instant startedAt,
     Instant endedAt,
-    CompletionStatus completionStatus,
-    SuccessStatus successStatus,
+    String completionStatus,
+    String successStatus,
     BigDecimal scoreRaw,
     BigDecimal scoreScaled,
     Long totalTimeSeconds,
