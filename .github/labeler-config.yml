@@ -1,0 +1,21 @@
+"bug":
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'bug/**'
+      - '**/bug/**'
+"tests":
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'tests/**'
+      - '**/*test*'
+      - '**/*spec*'
+".env":
+  - changed-files:
+    - any-glob-to-any-file:
+      - '.env/**'
+      - '**/.env/**'
+"draft":
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'draft/**'
+      - '**/draft/**'

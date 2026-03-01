@@ -1,0 +1,11 @@
+target/
+build/
+.gradle/
+*.class
+*.jar
+
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
