@@ -1,4 +1,10 @@
-comment: true
+comment:
+  layout: "header, diff, flags, files, footer"
+  behavior: default
+  require_changes: false
+  require_base: false
+  require_head: true
+
 coverage:
   status:
     project:
