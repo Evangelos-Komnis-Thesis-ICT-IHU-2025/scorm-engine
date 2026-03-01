@@ -4,6 +4,7 @@
 ### Bug Fixes
 
 * **architecture:** satisfy ArchUnit layering rules for api and domain ([27eabb6](https://github.com/Evangelos-Komnis-Thesis-ICT-IHU-2025/scorm-engine/commit/27eabb628aa33ffa643410efe4f2073c6829ae7d))
+* **release:** align semantic-release branch config with master ([6c7d05f](https://github.com/Evangelos-Komnis-Thesis-ICT-IHU-2025/scorm-engine/commit/6c7d05fbc855a4a2b034c0159b33113b6285d530))
 
 
 ### Features
