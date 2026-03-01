@@ -1,0 +1,60 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  application:
+    name: scorm-engine
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/scorm}
+    username: ${SPRING_DATASOURCE_USERNAME:scorm}
+    password: ${SPRING_DATASOURCE_PASSWORD:scorm}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+  flyway:
+    enabled: true
+  data:
+    redis:
+      host: ${SPRING_DATA_REDIS_HOST:localhost}
+      port: ${SPRING_DATA_REDIS_PORT:6379}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+app:
+  storage:
+    endpoint: ${MINIO_ENDPOINT:http://localhost:9000}
+    access-key: ${MINIO_ACCESS_KEY:minioadmin}
+    secret-key: ${MINIO_SECRET_KEY:minioadmin}
+    bucket-packages: ${MINIO_BUCKET_PACKAGES:scorm-packages}
+    bucket-extracted: ${MINIO_BUCKET_EXTRACTED:scorm-extracted}
+    presigned-ttl-minutes: ${MINIO_PRESIGNED_TTL_MINUTES:10}
+  jwt:
+    engine-secret: ${ENGINE_JWT_SECRET:engine-secret-engine-secret-engine-secret-123456}
+    launch-secret: ${LAUNCH_JWT_SECRET:launch-secret-launch-secret-launch-secret-123}
+    launch-ttl-minutes: ${LAUNCH_TTL_MINUTES:120}
+    engine-ttl-minutes: ${ENGINE_TTL_MINUTES:480}
+  runtime:
+    launch-state-ttl-seconds: ${RUNTIME_LAUNCH_STATE_TTL_SECONDS:7200}
+    stale-flush-minutes: ${RUNTIME_STALE_FLUSH_MINUTES:10}
+    flush-job-interval-ms: ${RUNTIME_FLUSH_JOB_INTERVAL_MS:60000}
+    strict-commit-sequence: ${RUNTIME_STRICT_COMMIT_SEQUENCE:false}
+  player:
+    base-url: ${PLAYER_BASE_URL:http://localhost:3000}
+
+logging:
+  level:
+    root: INFO
+    com.ihu.scorm.engine: INFO
